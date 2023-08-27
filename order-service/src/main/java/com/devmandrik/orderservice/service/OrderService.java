@@ -25,7 +25,7 @@ public class OrderService {
 
     private final OrderLineItemsMapper productMapper = OrderLineItemsMapper.INSTANCE;
 
-    public void placeOrder(OrderRequest orderRequest) {
+    public String placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
         List<OrderLineItems> orderLineItemsList = orderRequest.getOrderLineItemsDtoList()
@@ -53,8 +53,10 @@ public class OrderService {
 
         if (allProductsInStock) {
             orderRepository.save(order);
+            // publish Order Placed Event
+            return "Order Placed";
         } else {
-            throw new IllegalArgumentException("Product is in stock, please try again later!");
+            throw new IllegalArgumentException("Product is not in stock, please try again later");
         }
     }
 }
