@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.2'
     id 'io.spring.dependency-management' version '1.1.2'
+    id 'com.google.cloud.tools.jib' version '3.1.2'
 }
 
 group = 'com.devmandrik'
@@ -20,7 +21,6 @@ configurations {
 ext {
     mapstructVersion = "1.4.2.Final"
     springCloudVersion = "2022.0.4"
-
 }
 
 repositories {
@@ -42,6 +42,15 @@ dependencies {
     testImplementation 'org.testcontainers:mongodb'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:junit-jupiter'
+}
+
+jib {
+    from {
+        image 'eclipse-temurin:17.0.4.1_1-jre'
+    }
+    to {
+        image "registry.docker.hub.com/neoartsql/${project.name}"
+    }
 }
 
 dependencyManagement {
