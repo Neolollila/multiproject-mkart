@@ -101,7 +101,7 @@ services:
 
   ## Eureka Server
   discovery-server:
-    image: saiupadhyayula007/discovery-server:latest
+    image: neoartsql/discovery-service
     container_name: discovery-server
     pull_policy: always
     ports:
@@ -110,7 +110,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
 
   api-gateway:
-    image: saiupadhyayula007/api-gateway:latest
+    image: neonatal/api-gateway
     container_name: api-gateway
     pull_policy: always
     ports:
@@ -127,7 +127,7 @@ services:
   ## Product-Service Docker Compose Config
   product-service:
     container_name: product-service
-    image: saiupadhyayula007/product-service:latest
+    image: neoartsql/product-service
     pull_policy: always
     environment:
       - SPRING_PROFILES_ACTIVE=docker
@@ -139,7 +139,7 @@ services:
   ## Order-Service Docker Compose Config
   order-service:
     container_name: order-service
-    image: saiupadhyayula007/order-service:latest
+    image: neoartsql/order-service
     pull_policy: always
     environment:
       - SPRING_PROFILES_ACTIVE=docker
@@ -153,7 +153,7 @@ services:
   ## Inventory-Service Docker Compose Config
   inventory-service:
     container_name: inventory-service
-    image: saiupadhyayula007/inventory-service:latest
+    image: neoartsql/inventory-service
     pull_policy: always
     environment:
       - SPRING_PROFILES_ACTIVE=docker
@@ -166,7 +166,7 @@ services:
   ## Notification-Service Docker Compose Config
   notification-service:
     container_name: notification-service
-    image: neoartsql/notification-service:latest
+    image: neoartsql/notification-service
     pull_policy: always
     environment:
       - SPRING_PROFILES_ACTIVE=docker

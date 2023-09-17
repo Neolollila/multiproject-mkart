@@ -54,7 +54,7 @@ jib {
         image 'eclipse-temurin:17.0.4.1_1-jre'
     }
     to {
-        image "registry.docker.hub.com/neoartsql/${project.name}"
+        image "neoartsql/${project.name}"
     }
 }
 
